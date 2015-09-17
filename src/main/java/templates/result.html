@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+     <meta http-equiv="Content-Type" content="text/html; charset = UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <meta name="description" content="" />
+     <meta name="author" content="" />
+
+     <title>Getting Started: Handing Form Submission</title>
+
+    <!-- Bootstrap Core CSS -->
+     <link href="http://stevens-graphgroup.github.io/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- MetisMenu CSS -->
+     <link href="http://stevens-graphgroup.github.io/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet" />
+
+    <!-- Timeline CSS -->
+     <link href="http://stevens-graphgroup.github.io/css/plugins/timeline.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+     <link href="http://stevens-graphgroup.github.io/css/sb-admin-2.css" rel="stylesheet" />
+
+    <!-- Morris Charts CSS -->
+     <link href="http://stevens-graphgroup.github.io/css/plugins/morris.css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+     <link href="http://stevens-graphgroup.github.io/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+     <link href="http://stevens-graphgroup.github.io/css/main.css" rel ="stylesheet" />
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <!--Navigation bar-->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color:#444;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<img width="55px" src="img/logo.png" /> looks weird-->
+                <a class="navbar-brand" href="http://stevens-graphgroup.github.io/index.html">HBaaS</a>
+            </div>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..."/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/index.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/people.html"><i class="fa fa-user fa-fw"></i> People</a>
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/reports.html"><i class="fa fa-file fa-fw"></i> Reports</a>
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/contact.html"><i class="fa fa-envelope fa-fw"></i> Contact</a>
+                        </li>
+                         <li>
+                            <a href="http://stevens-graphgroup.github.io/materials.html"><i class="fa fa-folder fa-fw"></i> More Materials</a>
+                        </li>
+                         <li>
+                            <a class = "active" href="http://b412srv.ece.stevens-tech.edu:8080/query"><i class="fa fa-flash fa-fw"></i> Query</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Result</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Result From Database</strong>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                        <!--    <p th:text="'id: ' + ${query.id}" />
+                             <p th:text="'content: ' + ${query.content}" />-->
+
+                             <p th:text="'result: ' + ${query.result}"/> 
+                           <!--   <p th:text="'sequence: ' + ${query.sequence}"/>
+                             <p th:text="'input file: ' + ${query.upload_file}"/>
+                             <p th:text="'input file hmm: ' + ${query.upload_file_hmmProfle}"/>
+                              -->
+                             <p th:text="'accession id: ' + ${query.accession_id}"/>
+                             <p th:text="'data base: ' + ${query.database}"/>
+                             <p th:text="'taxonomy: ' +${query.taxonomy}"/>
+                            
+                             <p th:text="'hmm file: ' +${query.hmmProf}"/>
+                             <p th:text="'file: ' +${query.file_path}"/>
+                             
+                             <a href="/query">Submit another message</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="glyphicon glyphicon-picture"></i> Logo
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="logo">
+                            <div><img src="http://stevens-graphgroup.github.io/img/logo.png" alt="logo"/></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- /.panel -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://stevens-graphgroup.github.io/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://stevens-graphgroup.github.io/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="http://stevens-graphgroup.github.io/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="http://stevens-graphgroup.github.io/js/plugins/morris/raphael.min.js"></script>
+    <script src="http://stevens-graphgroup.github.io/js/plugins/morris/morris.min.js"></script>
+    <script src="http://stevens-graphgroup.github.io/js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="http://stevens-graphgroup.github.io/js/sb-admin-2.js"></script>
+</body>
+</html>

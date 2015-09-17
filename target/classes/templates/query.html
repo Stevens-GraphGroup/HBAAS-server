@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>HBaaS</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="http://stevens-graphgroup.github.io/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="http://stevens-graphgroup.github.io/css/sb-admin-2.css" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link href="http://stevens-graphgroup.github.io/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="http://stevens-graphgroup.github.io/css/main.css" rel = "stylesheet"/>
+
+    <link href="http://stevens-graphgroup.github.io/css/styles.css" rel = "stylesheet" />
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color:#444;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <!--<img width="55px" src="img/logo.png" /> looks weird-->
+            <a class="navbar-brand" href="index.html">HBaaS</a>
+        </div>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/index.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/people.html"><i class="fa fa-user fa-fw"></i> People</a>
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/reports.html"><i class="fa fa-file fa-fw"></i> Reports</a>
+                        </li>
+                        <li>
+                            <a href="http://stevens-graphgroup.github.io/contact.html"><i class="fa fa-envelope fa-fw"></i> Contact</a>
+                        </li>
+                         <li>
+                            <a href="http://stevens-graphgroup.github.io/materials.html"><i class="fa fa-folder fa-fw"></i> More Materials</a>
+                        </li>
+                         <li>
+                            <a class="http://stevens-graphgroup.github.io/active" href="query_test.html"><i class="fa fa-flash fa-fw"></i> Query</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">User Query</h1>
+            </div>
+        </div>
+    <form action="#" th:action="@{/query}" th:object="${query}" method="post" id="proteinSeqSearchForm"   >  
+        <div class = "container-fluid">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <!-- <li role="presentation" class="active"><a href="#PasteASequence" aria-controls="Paste a Sequence" role="tab" data-toggle="tab">Paste a Sequence</a></li> -->
+                   <!--  <li role="presentation"><a href="#UploadAFile" aria-controls="profile" role="tab" data-toggle="tab">Upload a file</a></li>   -->
+                    <li role="presentation"><a href="#Accession" aria-controls="messages" role="tab" data-toggle="tab">Accession / ID Lookup</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!--<div role="tabpanel" class="tab-pane active" id="PasteASequence">
+                        <br />
+                        <textarea name="seq" id="seq" th:field="*{sequence}"></textarea>
+                    </div>
+                     <div role="tabpanel" class="tab-pane" id="UploadAFile">
+                        <br />
+                   		<input type="file" name="file" id="file" th:field="*{upload_file}"/>
+                   		<input type="file" id="upload_file_1" value="" /> 
+						style="position: fixed;   top: -300px;   right: -500px;"
+						<textarea id="disp_tmp_path"  th:field="*{upload_file_temp_path}"></textarea>
+                    </div>
+                     -->
+                    <div role="tabpanel" class="tab-pane active" id="Accession">
+                        <br />
+                        <input type="text" name="acc" id="acc" title="Accession / ID" th:field="*{accession_id}" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+            <h4>HMM Profile</h4>
+            
+            <select th:field="*{hmmProf}" >
+			  <option   value="48.hmm">size 48 hmm</option>
+			  <option   value="95.hmm">size 95 hmm</option>
+			  <option   value="100.hmm">size 100 hmm</option>
+			  <option 	value="200.hmm">size 200 hmm</option>
+			  <option  	value="245.hmm">size 245 hmm</option>
+			  <option   value="387.hmm">size 387 hmm</option>
+			  <option   value="400.hmm">size 400 hmm</option>
+			</select>
+         <!--   <div>
+                <input type="file" name="Hmmfile" id="HmmProfle" th:field="*{upload_file_hmmProfle}" /> 
+            </div>
+            -->  
+        </div>
+        <br/>
+
+                <section>Sequence Database</section>
+                <div class="container-fluid">
+                    <p>Large collections</p>
+                    <label for = "genbank">
+                        <input id = "genbank" name = "seqdb" th:field="*{database}" type = "radio" value = "genbank" title = "Sequence database" checked="checked" />&nbsp;Genbank
+                    </label>
+                    <label for="nr">
+                        <input id="nr" name = "seqdb" th:field="*{database}" type="radio" value="nr" title="Sequence database"/>&nbsp;NR
+                    </label>
+                    <label for="refseq">
+                        <input id="refseq" name = "seqdb" th:field="*{database}" type="radio" value="refseq" title="Sequence database"/>&nbsp;RefSeq
+                    </label>
+                    <label for="uprot">
+                        <input id="uprot" name = "seqdb" th:field="*{database}" type="radio" value="uniprotkb" title="Sequence database"/>&nbsp;UniProtKB
+                    </label>
+                    <label for="pfamseq">
+                        <input id="pfamseq" name = "seqdb" th:field="*{database}" type="radio" value="pfamseq" title="Sequence database"/>&nbsp;Pfamseq
+                    </label>
+                </div>
+                <section>Limited By Taxonomy</section>
+                <input type="text" name="#autocomplete-dynamics" id="tax" th:field="*{taxonomy}"/>
+                <br />
+                <button type="submit" id = "subbutton">Submit</button>
+                <button type="reset" id = "resbutton">Reset</button>
+    </form>
+</div>
+
+
+    <script src="http://stevens-graphgroup.github.io/js/jquery-1.11.0.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/bootstrap.min.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/sb-admin-2.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/jquery-1.8.2.min.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/jquery.mockjax.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/jquery.autocomplete.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/countries.js"></script>
+
+    <script src="http://stevens-graphgroup.github.io/js/demo.js"></script>
+    <script>
+    $('#upload_file_1').change( function(event) {
+    	var tmppath = URL.createObjectURL(event.target.files[0]);
+    	   // $("img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+    	    $("#disp_tmp_path").val(tmppath);
+    	    var xhr = new XMLHttpRequest();
+    	    
+    	});
+    </script>
+    </body>
+    
+</html>

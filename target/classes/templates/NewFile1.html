@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<head>
+
+    
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>HBaaS</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="css/main.css" rel ="stylesheet"/>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color:#444;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <!--<img width="55px" src="img/logo.png" /> looks weird-->
+            <a class="navbar-brand" href="index.html">HBaaS</a>
+        </div>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                        </li>
+                        <li>
+                            <a href="people.html"><i class="fa fa-user fa-fw"></i> People</a>
+                        </li>
+                        <li>
+                            <a href="reports.html"><i class="fa fa-file fa-fw"></i> Reports</a>
+                        </li>
+                        <li>
+                            <a href="contact.html"><i class="fa fa-envelope fa-fw"></i> Contact</a>
+                        </li>
+                         <li>
+                            <a href="materials.html"><i class="fa fa-folder fa-fw"></i> More Materials</a>
+                        </li>
+                         <li>
+                            <a class="active" href="query_test.html"><i class="fa fa-flash fa-fw"></i> Query</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">User Query</h1>
+            </div>
+        </div>
+    <form action = "#" th:action="@{/greeting}" th:object="${greeting}"  method="post" id="proteinSeqSearchForm" enctype="multipart/form-data">
+        <div class = "container-fluid">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#PasteASequence" aria-controls="Paste a Sequence" role="tab" data-toggle="tab">Paste a Sequence</a></li>
+                    <li role="presentation"><a href="#UploadAFile" aria-controls="profile" role="tab" data-toggle="tab">Upload a file</a></li>
+                    <li role="presentation"><a href="#Accession" aria-controls="messages" role="tab" data-toggle="tab">Accession / ID Lookup</a></li>
+                    <li role="presentation"><a href="#HmmProfile" aria-controls="profile" role="tab" data-toggle="tab">HMM Profile</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="PasteASequence">
+                        <br />
+                        <textarea name="seq" id="seq" th:field="*{sequence}"></textarea>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="UploadAFile">
+                        <br />
+                   		<input type="file" name="file" id="file" th:field="*{upload_file}"/>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Accession">
+                        <br />
+                        <input type="text" name="acc" id="acc" title="Accession / ID" th:field="*{accession_id}" autocomplete="off" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="HmmProfile">
+                        <br />
+                       <!--  <input type="file" name="file" id="HmmProfle" th:field="*{upload_file_hmmProfle}"/>  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+                <section>Sequence Database</section>
+                <div class="container-fluid">
+                    <p>Large collections</p>
+                    <label for = "genbank">
+                        <input id = "genbank" name = "seqdb" th:field="*{database}" type = "radio" value = "genbank" title = "Sequence database" checked="checked" />&nbsp;Genbank
+                    </label>
+                    <label for="nr">
+                        <input id="nr" name = "seqdb" th:field="*{database}" type="radio" value="nr" title="Sequence database"/>&nbsp;NR
+                    </label>
+                    <label for="refseq">
+                        <input id="refseq" name = "seqdb" th:field="*{database}" type="radio" value="refseq" title="Sequence database"/>&nbsp;RefSeq
+                    </label>
+                    <label for="uprot">
+                        <input id="uprot" name = "seqdb" th:field="*{database}" type="radio" value="uniprotkb" title="Sequence database"/>&nbsp;UniProtKB
+                    </label>
+                    <label for="pfamseq">
+                        <input id="pfamseq" name = "seqdb" th:field="*{database}" type="radio" value="pfamseq" title="Sequence database"/>&nbsp;Pfamseq
+                    </label>
+                </div>
+                <section>Limited By Taxonomy</section>
+                <input type="text" name="tax" id="tax" autocomplete="off" th:field="*{taxonomy}"/>
+                <br />
+                <button type="submit" id = "subbutton">Submit</button>
+                <button type="reset" id = "resbutton">Reset</button>
+    </form>
+</div>
+
+
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+    </body>
+    
+    
+    
+    
+    
+    
+    <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Result</h1>
+<!--    <p th:text="'id: ' + ${query.id}" />
+    <p th:text="'content: ' + ${query.content}" />
+   
+    <p th:text="'result: ' + ${query.upload_file_sequence}"/> -->
+    <p th:text="'sequence: ' + ${query.sequence}"/>
+    <p th:text="'input file: ' + ${query.upload_file}"/>
+    <p th:text="'input file hmm: ' + ${query.upload_file_hmmProfle}"/>
+    
+    <p th:text="'accession_id: ' + ${query.accession_id}"/>
+    <p th:text="'accession_id: ' + ${query.database}"/>
+     <p th:text="'taxonomy: ' +${query.taxonomy}"/>
+     <p th:text="'result: ' + ${query.result}"/>
+    <a href="/query">Submit another message</a>
+
+
+</body>
+</html>

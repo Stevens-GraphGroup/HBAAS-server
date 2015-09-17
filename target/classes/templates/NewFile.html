@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+<head>
+
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>HBaaS</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- MetisMenu CSS -->
+    <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet"/>
+
+    <!-- Timeline CSS -->
+    <link href="css/plugins/timeline.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet"/>
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="css/main.css" rel ="stylesheet"/>
+
+	 <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+
+</head>
+<body>
+	<h1>Form</h1>
+   <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+    	
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        
+        <div class = "container">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#PasteASequence" aria-controls="Paste a Sequence" role="tab" data-toggle="tab">Paste a Sequence</a></li>
+                    <li role="presentation"><a href="#UploadAFile" aria-controls="profile" role="tab" data-toggle="tab">Upload a file</a></li>
+                    <li role="presentation"><a href="#Accession" aria-controls="messages" role="tab" data-toggle="tab">Accession / ID Lookup</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="PasteASequence">
+                        <label for = "seq">Paste a Sequence</label>
+                        <input type="text" name="seq" id="seq" title="Sequence" th:field="*{sequence}"></input>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="UploadAFile">
+                        <label for="file">Upload a file</label>
+                        <input type="file" name="file" id="file" th:field="*{upload_file}"/>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Accession">
+                        <label for="acc">Accession / ID Lookup</label>
+                        <input type="text" name="acc" id="acc" value="" title="Accession / ID" autocomplete="off" th:field="*{accession_id}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table>
+        <tr>
+        <td>Choose the flavor you like:</td>
+        <td><input type="radio" th:field="*{database}" value = "1" />1</td>
+        
+        <td><input type="radio" th:field="*{database}" value = "2" />2</td>
+        
+        <td><input type="radio" th:field="*{database}" value = "3" />3</td>
+        
+        <td><input type="radio" th:field="*{database}" value = "4" />4</td>
+        </tr></table>
+         <div class="container">
+            <fieldset id="sequencedb" class="collapsible expanded">
+                <legend>Sequence Database</legend>
+                <div class="container">
+                    <p>Large collections</p>
+                    <label for="nr">
+                        <input id="nr" name="seqdb" type="radio" th:field="*{database}" value="nr" title="Sequence database"/>&nbsp;NR
+                    </label>
+                    <label for="refseq">
+                        <input id="refseq" name="seqdb" type="radio" th:field="*{database}" value="refseq" title="Sequence database"/>&nbsp;RefSeq
+                    </label>
+                    <label for="uprot">
+                        <input id="uprot" name="seqdb"  type="radio" th:field="*{database}" value="uniprotkb" checked="checked" title="Sequence database"/>&nbsp;UniProtKB
+                    </label>
+                    <label for="pfamseq">
+                        <input id="pfamseq" name="seqdb" type="radio" th:field="*{database}" value="pfamseq" title="Sequence database"/>&nbsp;Pfamseq
+                    </label>
+                </div>
+                <div class = "container">
+                    <p>Annotated and Structures</p>
+                    <label for="sprot">
+                        <input id="sprot" name="seqdb" type="radio" th:field="*{database}" value="swissprot" title="Sequence database"/>
+                            &nbsp;SwissProt
+                        </label>
+                    <label for="pdb">
+                        <input id="pdb" name="seqdb"  type="radio" th:field="*{database}" value="pdb" title="Sequence database"/>
+                        &nbsp;PDB
+                        </label>
+                </div>
+                <div class="container">
+                    <p>Metagenomics and Environmental</p>
+                    <label for="unimes">
+                        <input id="unimes" name="seqdb" type="radio" th:field="*{database}" value="unimes" title="Sequence database"/>&nbsp;UniMes
+                    </label>
+                    <label for="envnr">
+                        <input id="envnr" name="seqdb"  type="radio" th:field="*{database}" value="env_nr" title="Sequence database"/>
+                        &nbsp;env NR
+                    </label>
+                </div>
+                <div class="container">
+                    <p>Representative Sets (UniProt)</p>
+                    <label for="rp75">
+                        <input id="rp75" name="seqdb" type="radio" th:field="*{database}" value="rp75" title="Sequence database"/>
+                        &nbsp;rp75
+                    </label>
+                    <label for="rp55">
+                        <input id="rp55" name="seqdb" type="radio" th:field="*{database}" value="rp55" title="Sequence database"/>
+                        &nbsp;rp55
+                    </label>
+                    <label for="rp35">
+                        <input id="rp35" name="seqdb" type="radio" th:field="*{database}" value="rp35" title="Sequence database"/>
+                        &nbsp;rp35
+                    </label>
+                    <label for="rp15">
+                        <input id="rp15" name="seqdb" type="radio" th:field="*{database}" value="rp15" title="Sequence database"/>
+                        &nbsp;rp15
+                    </label>
+                    <label for="uniprotrefprot">
+                        <input id="uniprotrefprot" name="seqdb" type="radio" th:field="*{database}" value="uniprotrefprot" title="Sequence database"/>
+                        &nbsp;Reference Proteomes
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        
+        
+    </form>
+    
+</body>
